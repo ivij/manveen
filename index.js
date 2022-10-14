@@ -1,17 +1,17 @@
 var express = require('express');
 var app = express();
 const port1 = 3000;
-var temperatureData = 0;
+var lighteData = 0;
 
 const SerialPort = require('serialport');
 const Readline = SerialPort.parsers.Readline;
 const port = new SerialPort('COM5', { baudRate: 9600 });
 const parser = port.pipe(new Readline({ delimiter: '\r\n' }));
-parser.on('data', (temp) => {
-    console.log(temp);
-    temperatureData = temp;
+parser.on('data', (ligh) => {
+    console.log(ligh);
+    ligheData = ligh;
     app.get('/', (req, res) => {
-        res.send(temperatureData)
+        res.send(lighData)
     })
 });
 
