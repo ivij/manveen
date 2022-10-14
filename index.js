@@ -7,9 +7,9 @@ const SerialPort = require('serialport');
 const Readline = SerialPort.parsers.Readline;
 const port = new SerialPort('COM5', { baudRate: 9600 });
 const parser = port.pipe(new Readline({ delimiter: '\r\n' }));
-parser.on('data', (ligh) => {
-    console.log(ligh);
-    lightData = ligh;
+parser.on('data', (light) => {
+    console.log(light);
+    lightData = light;
     app.get('/', (req, res) => {
         res.send(lightData)
     })
